@@ -20,7 +20,7 @@ export default async function Home() {
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
             <h2 className="text-3xl font-bold mb-4">No Names Found</h2>
-            <p className="text-gray-400">Add Allah's names to your Cosmic bucket to see them here.</p>
+            <p className="text-gray-400">Add Allah&apos;s names to your Cosmic bucket to see them here.</p>
           </div>
         </div>
       ) : (

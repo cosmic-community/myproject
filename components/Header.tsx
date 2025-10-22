@@ -7,7 +7,7 @@ export default function Header() {
             Asma ul Husna
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">
-            Journey through the cosmos. Click on any star to explore the meaning of Allah's names.
+            Journey through the cosmos. Click on any star to explore the meaning of Allah&apos;s names.
           </p>
         </div>
       </div>
