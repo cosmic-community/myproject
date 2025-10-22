@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --cosmic-dark: 10 14 39;
+    --cosmic-purple: 91 33 182;
+    --cosmic-blue: 30 58 138;
+    --cosmic-pink: 219 39 119;
+  }
+
+  * {
+    @apply border-gray-700;
+  }
+
+  body {
+    @apply bg-gradient-to-b from-cosmic-dark to-black text-white;
+    @apply antialiased;
+    overflow-x: hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .star-glow {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6),
+                0 0 40px rgba(147, 51, 234, 0.4),
+                0 0 60px rgba(147, 51, 234, 0.2);
+  }
+
+  .star-hover-glow {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.8),
+                0 0 60px rgba(147, 51, 234, 0.6),
+                0 0 90px rgba(147, 51, 234, 0.4);
+  }
+
+  .cosmic-gradient {
+    background: linear-gradient(135deg, 
+      rgba(91, 33, 182, 0.3) 0%, 
+      rgba(30, 58, 138, 0.3) 50%, 
+      rgba(219, 39, 119, 0.3) 100%);
+  }
+}
