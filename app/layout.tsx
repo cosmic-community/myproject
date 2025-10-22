@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import CosmicBadge from '@/components/CosmicBadge'
+import Script from 'next/script'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Console capture script for dashboard debugging */}
-        <script src="/dashboard-console-capture.js" />
+        <Script src="/dashboard-console-capture.js" strategy="afterInteractive" />
       </head>
       <body className={inter.className}>
         {children}
