@@ -21,13 +21,11 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <head>
-        {/* Console capture script for dashboard debugging */}
-        <Script src="/dashboard-console-capture.js" strategy="afterInteractive" />
-      </head>
       <body className={inter.className}>
         {children}
         <CosmicBadge bucketSlug={bucketSlug} />
+        {/* Console capture script for dashboard debugging */}
+        <Script src="/dashboard-console-capture.js" strategy="afterInteractive" />
       </body>
     </html>
   )
