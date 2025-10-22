@@ -11,11 +11,11 @@ function hasStatus(error: unknown): error is { status: number } {
   return typeof error === 'object' && error !== null && 'status' in error;
 }
 
-// Fetch all stars with proper error handling
-export async function getAllStars() {
+// Fetch all Allah's names with proper error handling
+export async function getAllNames() {
   try {
     const response = await cosmic.objects
-      .find({ type: 'stars' })
+      .find({ type: 'allahs-names' })
       .props(['id', 'title', 'slug', 'metadata'])
       .depth(1);
     
@@ -24,16 +24,16 @@ export async function getAllStars() {
     if (hasStatus(error) && error.status === 404) {
       return [];
     }
-    throw new Error('Failed to fetch stars');
+    throw new Error('Failed to fetch Allah\'s names');
   }
 }
 
-// Fetch a single star by slug
-export async function getStarBySlug(slug: string) {
+// Fetch a single name by slug
+export async function getNameBySlug(slug: string) {
   try {
     const response = await cosmic.objects
       .findOne({
-        type: 'stars',
+        type: 'allahs-names',
         slug
       })
       .props(['id', 'title', 'slug', 'metadata'])
@@ -44,6 +44,6 @@ export async function getStarBySlug(slug: string) {
     if (hasStatus(error) && error.status === 404) {
       return null;
     }
-    throw new Error('Failed to fetch star');
+    throw new Error('Failed to fetch name');
   }
 }

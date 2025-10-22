@@ -7,9 +7,9 @@ import Script from 'next/script'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Stellar Explorer - Interactive Galaxy Journey',
-  description: 'Explore the cosmos through an interactive galaxy view. Click on stars to discover detailed astronomical information and stunning imagery.',
-  keywords: 'astronomy, stars, galaxy, space, cosmos, interactive',
+  title: 'Asma ul Husna - The 99 Beautiful Names of Allah',
+  description: 'Explore the divine attributes of Allah through an interactive cosmic journey. Click on stars to discover the meaning and spiritual significance of each of Allah\'s 99 Beautiful Names.',
+  keywords: 'Asma ul Husna, Allah names, Islamic spirituality, 99 names, divine attributes, Islam',
 }
 
 export default function RootLayout({

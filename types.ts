@@ -1,4 +1,4 @@
-// Type definitions for Cosmic Star objects
+// Type definitions for Cosmic Allah's Names objects
 
 export interface CosmicObject {
   id: string;
@@ -11,27 +11,29 @@ export interface CosmicObject {
   modified_at: string;
 }
 
-export interface Star extends CosmicObject {
-  type: 'stars';
+export interface AllahName extends CosmicObject {
+  type: 'allahs-names';
   metadata: {
-    star_name: string;
+    arabic_name: string;
+    transliteration: string;
+    english_meaning: string;
     short_description?: string;
-    detailed_information?: string;
-    discovery_date?: string;
-    star_image?: {
+    detailed_explanation?: string;
+    spiritual_significance?: string;
+    name_image?: {
       url: string;
       imgix_url: string;
     };
-    distance?: string;
-    star_type?: {
+    quran_reference?: string;
+    category?: {
       key: string;
       value: string;
     };
   };
 }
 
-// Type literals for star types
-export type StarType = 'red_dwarf' | 'main_sequence' | 'red_giant' | 'supergiant' | 'white_dwarf';
+// Type literals for name categories
+export type NameCategory = 'mercy' | 'power' | 'knowledge' | 'majesty' | 'beauty';
 
 export interface CosmicResponse<T> {
   objects: T[];
@@ -40,16 +42,16 @@ export interface CosmicResponse<T> {
   skip?: number;
 }
 
-// Type guard for Star objects
-export function isStar(obj: CosmicObject): obj is Star {
-  return obj.type === 'stars';
+// Type guard for Allah's Name objects
+export function isAllahName(obj: CosmicObject): obj is AllahName {
+  return obj.type === 'allahs-names';
 }
 
-// Helper type for star positioning in galaxy view
-export interface StarPosition {
+// Helper type for name positioning in galaxy view
+export interface NamePosition {
   id: string;
   x: number;
   y: number;
   size: number;
-  star: Star;
+  name: AllahName;
 }

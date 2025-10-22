@@ -1,28 +1,28 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Star, StarPosition } from '@/types'
+import { AllahName, NamePosition } from '@/types'
 import StarModal from '@/components/StarModal'
 
 interface GalaxyViewProps {
-  stars: Star[]
+  names: AllahName[]
 }
 
-export default function GalaxyView({ stars }: GalaxyViewProps) {
-  const [selectedStar, setSelectedStar] = useState<Star | null>(null)
-  const [starPositions, setStarPositions] = useState<StarPosition[]>([])
+export default function GalaxyView({ names }: GalaxyViewProps) {
+  const [selectedName, setSelectedName] = useState<AllahName | null>(null)
+  const [namePositions, setNamePositions] = useState<NamePosition[]>([])
 
   useEffect(() => {
-    // Generate random positions for stars
-    const positions: StarPosition[] = stars.map((star, index) => ({
-      id: star.id,
+    // Generate random positions for names (represented as stars)
+    const positions: NamePosition[] = names.map((name) => ({
+      id: name.id,
       x: Math.random() * 80 + 10, // 10% to 90% of width
       y: Math.random() * 70 + 15, // 15% to 85% of height
       size: Math.random() * 20 + 15, // 15px to 35px
-      star,
+      name,
     }))
-    setStarPositions(positions)
-  }, [stars])
+    setNamePositions(positions)
+  }, [names])
 
   return (
     <>
@@ -44,11 +44,11 @@ export default function GalaxyView({ stars }: GalaxyViewProps) {
               ))}
             </div>
 
-            {/* Interactive stars */}
-            {starPositions.map((position) => (
+            {/* Interactive stars representing Allah's names */}
+            {namePositions.map((position) => (
               <button
                 key={position.id}
-                onClick={() => setSelectedStar(position.star)}
+                onClick={() => setSelectedName(position.name)}
                 className="absolute transform -translate-x-1/2 -translate-y-1/2 transition-all duration-300 hover:scale-125 cursor-pointer group"
                 style={{
                   left: `${position.x}%`,
@@ -56,22 +56,22 @@ export default function GalaxyView({ stars }: GalaxyViewProps) {
                   width: `${position.size}px`,
                   height: `${position.size}px`,
                 }}
-                aria-label={`View details for ${position.star.metadata.star_name}`}
+                aria-label={`View details for ${position.name.metadata.arabic_name} - ${position.name.metadata.transliteration}`}
               >
                 <div className="w-full h-full bg-white rounded-full star-glow group-hover:star-hover-glow animate-float transition-all duration-300">
-                  {position.star.metadata.star_image && (
+                  {position.name.metadata.name_image && (
                     <img
-                      src={`${position.star.metadata.star_image.imgix_url}?w=100&h=100&fit=crop&auto=format,compress`}
-                      alt={position.star.metadata.star_name}
+                      src={`${position.name.metadata.name_image.imgix_url}?w=100&h=100&fit=crop&auto=format,compress`}
+                      alt={position.name.metadata.transliteration}
                       className="w-full h-full rounded-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     />
                   )}
                 </div>
                 
-                {/* Star name tooltip */}
+                {/* Name tooltip */}
                 <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
                   <div className="bg-black bg-opacity-90 px-3 py-1 rounded text-sm">
-                    {position.star.metadata.star_name}
+                    {position.name.metadata.arabic_name} • {position.name.metadata.transliteration}
                   </div>
                 </div>
               </button>
@@ -81,15 +81,15 @@ export default function GalaxyView({ stars }: GalaxyViewProps) {
           {/* Instructions */}
           <div className="text-center mt-12">
             <p className="text-gray-400 text-lg">
-              💫 Hover over stars to see their names • Click to explore their story
+              ✨ Hover over stars to see the names • Click to explore their meaning
             </p>
           </div>
         </div>
       </div>
 
-      {/* Star detail modal */}
-      {selectedStar && (
-        <StarModal star={selectedStar} onClose={() => setSelectedStar(null)} />
+      {/* Name detail modal */}
+      {selectedName && (
+        <StarModal name={selectedName} onClose={() => setSelectedName(null)} />
       )}
     </>
   )
